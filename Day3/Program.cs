@@ -39,26 +39,26 @@ int PuzzleTwo(string input)
     List<Tuple<int, int>> visited = new();
     Tuple<int, int> santa = new(0, 0);
     Tuple<int, int> robo = new(0, 0);
-    
+
     bool next = true;
-    
+
     visited.Add(santa);
-    
+
     foreach (var c in input)
     {
         if (next)
         {
-			santa = new Tuple<int, int>(santa.Item1 + map[c].Item1, santa.Item2 + map[c].Item2);
-			visited.Add(santa);
-		}
-		else
-		{
-			robo = new Tuple<int, int>(robo.Item1 + map[c].Item1, robo.Item2 + map[c].Item2);
-			visited.Add(robo);
-		}
+            santa = new Tuple<int, int>(santa.Item1 + map[c].Item1, santa.Item2 + map[c].Item2);
+            visited.Add(santa);
+        }
+        else
+        {
+            robo = new Tuple<int, int>(robo.Item1 + map[c].Item1, robo.Item2 + map[c].Item2);
+            visited.Add(robo);
+        }
 
-		next = !next;
-	}
+        next = !next;
+    }
 
-	return visited.Distinct().Count();
+    return visited.Distinct().Count();
 }
